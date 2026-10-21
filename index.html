@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="sgs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telšiai 3D</title>
+<meta name="description" content="Atviro pasaulio vairavimo žaidimas tikro dydžio Telšiuose, žemaitiškai. Kuriamas — netrukus Windows, macOS ir Linux.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect x=%224%22 y=%224%22 width=%2256%22 height=%2256%22 fill=%22%23ffc93c%22 stroke=%22%23111216%22 stroke-width=%226%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-family=%22Arial Black,sans-serif%22 font-size=%2238%22 font-style=%22italic%22 font-weight=%22900%22 text-anchor=%22middle%22 fill=%22%23111216%22%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Barlow:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  /* Comic look: ink, cream paper, gold captions, red */
+  :root { --ink:#111216; --paper:#f4eedc; --gold:#ffc93c; --red:#c62828; --slate:#2b3440; --lake:#1f5f8b; }
+  * { box-sizing:border-box; }
+  body { margin:0; color:var(--ink); font-family:Inter, system-ui, sans-serif; line-height:1.6;
+         background:var(--paper) radial-gradient(rgba(17,18,22,.09) 1.2px, transparent 1.4px) 0 0/9px 9px; }
+  a { color:inherit; }
+  html:not([lang="sgs"]) [data-sgs], html:not([lang="lt"]) [data-lt], html:not([lang="en"]) [data-en] { display:none !important; }
+  .lang { position:fixed; top:14px; right:14px; z-index:10; display:flex; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); transform:skewX(-10deg); }
+  .lang button { font:900 italic 15px Barlow, sans-serif; border:0; padding:6px 12px; background:var(--paper); cursor:pointer; }
+  .lang button.on { background:var(--gold); }
+  .hero { position:relative; min-height:min(78vh, 820px); display:flex; align-items:flex-end; border-bottom:8px solid var(--ink);
+          background:linear-gradient(180deg, #8fc1e3 0%, #cfe6f2 52%, #3f7fa6 52.2%, var(--lake) 100%); overflow:hidden; }
+  .hero::before { content:""; position:absolute; inset:0;
+          background:radial-gradient(rgba(17,18,22,.16) 1.4px, transparent 1.6px) 0 0/10px 10px; }
+  .hero .hills { position:absolute; left:0; right:0; bottom:47.8%; height:34%; }
+  .hero .in { position:relative; padding:48px 16px; max-width:1100px; margin:0 auto; width:100%; color:#fff; }
+  .hero .card { max-width:620px; background:rgba(17,18,22,.88); border:5px solid var(--ink); box-shadow:10px 10px 0 var(--red);
+                padding:22px 28px 26px; transform:skewX(-4deg); }
+  .hero .card > * { transform:skewX(4deg); }
+  h1 { font-family:Barlow, Impact, sans-serif; font-style:italic; font-weight:900; font-size:clamp(56px,10vw,112px); margin:0; line-height:.95; color:#fff;
+       text-shadow:6px 7px 0 var(--ink), -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink), 2px 2px 0 var(--ink); }
+  .tag { display:inline-block; background:var(--red); color:#fff; border:4px solid var(--ink); box-shadow:4px 4px 0 var(--ink);
+         padding:3px 14px; font:900 italic 17px Barlow, sans-serif; letter-spacing:.5px; margin:14px 0 16px; }
+  .lead { font-size:18px; margin:0 0 22px; }
+  .soon { display:inline-block; background:var(--gold); color:var(--ink); border:4px solid var(--ink); box-shadow:6px 6px 0 #000; padding:10px 22px;
+          font:900 italic 22px Barlow, sans-serif; transform:skewX(-10deg); }
+  .soon small { display:block; font:600 normal 13px Inter, sans-serif; }
+  main { max-width:1100px; margin:0 auto; padding:24px 16px 60px; }
+  h2 { display:inline-block; font-family:Barlow, Impact, sans-serif; font-style:italic; font-weight:900; font-size:34px; margin:56px 0 20px;
+       background:var(--gold); border:4px solid var(--ink); box-shadow:6px 6px 0 var(--ink); padding:2px 22px; transform:skewX(-10deg); }
+  .features { padding-left:20px; } .features li { margin:7px 0; }
+  .features li::marker { content:"★ "; color:var(--red); }
+  footer { border-top:8px solid var(--ink); background:var(--slate); color:var(--paper); padding:22px 16px; font-size:14px; text-align:center; }
+  @media (max-width:600px) { .hero .card { transform:none; padding:18px; } .hero .card > * { transform:none; } .soon { transform:none; } }
+</style>
+</head>
+<body>
+<div class="lang" role="group" aria-label="Kalba / Language">
+  <button id="sgs" class="on">ŽEM</button><button id="lt">LT</button><button id="en">EN</button>
+</div>
+
+<header class="hero">
+  <svg class="hills" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 300 L0 170 C120 120 220 140 320 110 C420 80 500 150 610 120 C700 95 780 60 880 100 C980 140 1080 90 1200 130 L1200 300 Z" fill="#3e6b3a" stroke="#111216" stroke-width="5"/>
+    <g fill="#f4eedc" stroke="#111216" stroke-width="4">
+      <rect x="545" y="70" width="70" height="60"/><rect x="565" y="22" width="30" height="48"/>
+      <path d="M560 22 L580 2 L600 22 Z" fill="#5b3a2a"/><path d="M540 70 L580 46 L620 70 Z" fill="#c4553b"/>
+    </g>
+  </svg>
+  <div class="in"><div class="card">
+    <h1>TELŠĒ</h1>
+    <div class="tag" data-sgs>MIESTS ONT SEPTĪNIU KALVU</div>
+    <div class="tag" data-lt>MIESTAS ANT SEPTYNIŲ KALVŲ</div>
+    <div class="tag" data-en>THE TOWN ON SEVEN HILLS</div>
+    <p class="lead" data-sgs>Atvėra svieta važėnėjėma žaidėms tėkra dīdė Telšiūs — žemaitėškā: katedra ont Insulas kalna, Mastė ežers, Turgaus aikštė ė vėsas miesta gatvės.</p>
+    <p class="lead" data-lt>Atviro pasaulio vairavimo žaidimas tikro dydžio Telšiuose — žemaitiškai: katedra ant Insulos kalno, Masčio ežeras, Turgaus aikštė ir visos miesto gatvės.</p>
+    <p class="lead" data-en>An open-world driving game in a 1:1 model of Telšiai, Lithuania — in Samogitian: the cathedral on Insula hill, Lake Mastis, Turgaus aikštė and every street in town.</p>
+    <div class="soon"><span data-sgs>Kuriams — netrukus</span><span data-lt>Kuriamas — netrukus</span><span data-en>In development — coming soon</span>
+      <small>Windows · macOS · Linux</small></div>
+  </div></div>
+</header>
+
+<main>
+  <h2 data-sgs>Aple žaidėma</h2><h2 data-lt>Apie žaidimą</h2><h2 data-en>About</h2>
+  <p data-sgs>Važėnėk pu Telšius tuokius, kuokė anėi īr: tėkras gatvės, pastatā ė kalvas ėš atvėrūju doumenū, Mastė ežers, katedra ont kalna. Ėšlīpk ėš mašėnas, vaikštėnėk, „pasėskuolėnk“ kėta mašėna, vežiuok keleivius ė siontas.</p>
+  <p data-lt>Važinėk po Telšius tokius, kokie jie yra: tikros gatvės, pastatai ir kalvos iš atvirųjų duomenų, Masčio ežeras, katedra ant kalno. Išlipk iš automobilio, vaikščiok, „pasiskolink“ kito mašiną, vežiok keleivius ir siuntas.</p>
+  <p data-en>Drive around Telšiai as it really is: real streets, buildings and hills from open data, Lake Mastis, the cathedral on its hill. Get out, walk, “borrow” someone else's car, carry passengers and parcels.</p>
+  <p data-sgs>Žaidėms kouriams. Ėš tuo patėis autoriaus — <a href="https://gediminasurvila.github.io/kedainiai-3d-site/">Kiedainē 3D</a>.</p>
+  <p data-lt>Žaidimas kuriamas ir tobulinamas. Iš to paties autoriaus — <a href="https://gediminasurvila.github.io/kedainiai-3d-site/">Kėdainiai 3D</a>.</p>
+  <p data-en>The game is in development. By the same author — <a href="https://gediminasurvila.github.io/kedainiai-3d-site/">Kėdainiai 3D</a>.</p>
+
+  <h2 data-sgs>Kas vėdou</h2><h2 data-lt>Kas viduje</h2><h2 data-en>Features</h2>
+  <ul class="features" data-sgs>
+    <li>Telšē 1:1 — daugiau kaip 10 000 pastatu, daugiau kaip 300 km kelė, vėsos Mastė ežers ė Rainiu kuoplīčė</li>
+    <li>Žaidėms žemaitėškā (lietoviu ė onglu kalbuos — nostatīmūs); gatviu ė parduotoviu ožrašā lietovėškā, kap mieste</li>
+    <li>Eisms, šviesoforā, žmuonės gatvies, puolicėjė ė gaudīnės, darbā: taksi, siontas, picas, miesta šventė</li>
+    <li>Diena ė naktės; komėksa stėliaus ėliustracėjės</li>
+  </ul>
+  <ul class="features" data-lt>
+    <li>Telšiai 1:1 — daugiau kaip 10 000 pastatų, daugiau kaip 300 km kelių, visas Masčio ežeras ir Rainių koplyčia</li>
+    <li>Žaidimas žemaitiškai (lietuvių ir anglų kalbos — nustatymuose); gatvių ir parduotuvių užrašai lietuviški, kaip mieste</li>
+    <li>Eismas, šviesoforai, žmonės gatvėse, policija ir gaudynės, darbai: taksi, siuntos, picos, miesto šventė</li>
+    <li>Diena ir naktis; komikso stiliaus iliustracijos</li>
+  </ul>
+  <ul class="features" data-en>
+    <li>Telšiai at 1:1 — over 10,000 buildings, over 300 km of roads, all of Lake Mastis and the Rainiai chapel</li>
+    <li>The game is in Samogitian (Lithuanian and English in the settings); street and shop signs stay Lithuanian, as in town</li>
+    <li>Traffic, traffic lights, people in the streets, police and chases; jobs: taxi, parcels, pizza, the town festival</li>
+    <li>Day and night; comic-style illustrations</li>
+  </ul>
+</main>
+
+<footer>
+  <span data-sgs>Žaidėma autorios</span><span data-lt>Žaidimo autorius</span><span data-en>Game by</span> Gediminas Survila ·
+  <span data-sgs>Žemieplapė doumenīs</span><span data-lt>Žemėlapio duomenys</span><span data-en>Map data</span> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL) ·
+  Copernicus DEM GLO-30 · Regitra · Poly Haven (CC0) · Godot Engine · Blender
+</footer>
+
+<script>
+  const LANGS = ['sgs', 'lt', 'en'];
+  const set = (l) => {
+    document.documentElement.lang = l;
+    for (const c of LANGS) document.getElementById(c).classList.toggle('on', c === l);
+    try { localStorage.setItem('lang', l); } catch (e) {}
+  };
+  let saved = 'sgs';
+  try { saved = localStorage.getItem('lang') || 'sgs'; } catch (e) {}
+  set(LANGS.includes(saved) ? saved : 'sgs');
+  for (const c of LANGS) document.getElementById(c).onclick = () => set(c);
+</script>
+</body>
+</html>
