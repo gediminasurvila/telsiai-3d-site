@@ -42,6 +42,13 @@
   .btn > * { display:block; }
   .btn:hover, .btn:focus-visible { background:var(--red); color:#fff; transform:skewX(-10deg) translate(-2px,-2px); box-shadow:9px 9px 0 #000; }
   .btn small { font:600 normal 12px Inter, sans-serif; opacity:.85; }
+  .btn-web { background:var(--paper); }
+  .keys { display:grid; grid-template-columns:auto 1fr; gap:8px 18px; align-items:center; }
+  kbd { background:var(--gold); border:2px solid var(--ink); box-shadow:2px 2px 0 var(--ink); padding:1px 8px; font-weight:800; font-family:inherit; margin-right:2px; }
+  .os { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px; }
+  .os div { border:4px solid var(--ink); box-shadow:5px 5px 0 var(--ink); padding:12px 16px; background:var(--paper); }
+  .os b { font:900 italic 20px Barlow, sans-serif; }
+  code { overflow-wrap:anywhere; }
   .ver { margin-top:16px; font-size:13px; opacity:.85; }
   .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:26px; }
   .panel { border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); background:var(--paper); margin:0; }
@@ -82,8 +89,9 @@
       <a class="btn" href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest/download/Telsiai-windows.zip"><span>⬇ Windows</span><small data-sgs>64 bitu · zip</small><small data-lt>64 bitų · zip</small><small data-en>64-bit · zip</small></a>
       <a class="btn" href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest/download/Telsiai-macos.zip"><span>⬇ macOS</span><small>Intel + Apple Silicon</small></a>
       <a class="btn" href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest/download/Telsiai-linux.zip"><span>⬇ Linux</span><small>x86_64 · zip</small></a>
+      <a class="btn btn-web" href="play/"><span data-sgs>▶ Naršīklie</span><span data-lt>▶ Naršyklėje</span><span data-en>▶ In browser</span><small data-sgs>beta · paprastesnė grafėka · ~135 MB</small><small data-lt>beta · paprastesnė grafika · ~135 MB</small><small data-en>beta · lower graphics · ~135 MB</small></a>
     </div>
-    <div class="ver"><span data-sgs>Dīkā · aple 500 MB · </span><span data-lt>Nemokamai · apie 500 MB · </span><span data-en>Free · about 500 MB · </span><a href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest">GitHub</a></div>
+    <div class="ver"><span data-sgs>Dīkā · aple 500 MB · </span><span data-lt>Nemokamai · apie 500 MB · </span><span data-en>Free · about 500 MB · </span><a href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest" data-sgs>vėsas versėjės</a><a href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest" data-lt>visos versijos</a><a href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest" data-en>all releases</a></div>
   </div></div>
 </header>
 
@@ -128,12 +136,56 @@
     <li>Traffic, traffic lights, people in the streets, police and chases; jobs: taxi, parcels, pizza, the town festival</li>
     <li>Day and night; comic-style illustrations</li>
   </ul>
+
+  <h2 data-sgs>Valdīms</h2><h2 data-lt>Valdymas</h2><h2 data-en>Controls</h2>
+  <div class="keys">
+    <span><kbd>W</kbd><kbd>S</kbd> / ↑ ↓</span><span data-sgs>važiuotė ėr stabdītė · eitė</span><span data-lt>važiuoti ir stabdyti · eiti</span><span data-en>drive and brake · walk</span>
+    <span><kbd>A</kbd><kbd>D</kbd> / ← →</span><span data-sgs>vairoutė · eitė ī šuona</span><span data-lt>vairuoti · eiti į šoną</span><span data-en>steer · walk sideways</span>
+    <span>🖱</span><span data-sgs>pėsčiuom: dairītīs aplėnk (kamera sokas so pelė)</span><span data-lt>pėsčiomis: dairytis aplink (kamera sukasi su pele)</span><span data-en>on foot: look around (the camera turns with the mouse)</span>
+    <span><kbd>Shift</kbd></span><span data-sgs>bėgtė</span><span data-lt>bėgti</span><span data-en>run</span>
+    <span><kbd>Tarps</kbd></span><span data-sgs>rankėnis · šuolis</span><span data-lt>rankinis stabdys · šuolis</span><span data-en>handbrake · jump (Space)</span>
+    <span><kbd>F</kbd></span><span data-sgs>ėšlīptė / īlīptė (arba paimtė mašėna)</span><span data-lt>išlipti / įlipti (arba paimti mašiną)</span><span data-en>get out / get in (or take a car)</span>
+    <span><kbd>J</kbd></span><span data-sgs>imtė darba</span><span data-lt>imti darbą</span><span data-en>take a job</span>
+    <span><kbd>H</kbd></span><span data-sgs>signals</span><span data-lt>signalas</span><span data-en>horn</span>
+    <span><kbd>Q</kbd> / 🖱</span><span data-sgs>smūgis · šūvis</span><span data-lt>smūgis · šūvis</span><span data-en>hit · shoot</span>
+    <span><kbd>Tab</kbd></span><span data-sgs>keistė ginkla</span><span data-lt>keisti ginklą</span><span data-en>switch weapon</span>
+    <span><kbd>N</kbd></span><span data-sgs>azuots</span><span data-lt>azoto greitintuvas</span><span data-en>nitro</span>
+    <span><kbd>R</kbd></span><span data-sgs>atgal ī kelė</span><span data-lt>atgal į kelią</span><span data-en>back on the road</span>
+    <span><kbd>T</kbd></span><span data-sgs>greits čiesos</span><span data-lt>greitas laikas</span><span data-en>fast time</span>
+    <span><kbd>C</kbd><kbd>M</kbd><kbd>Esc</kbd><kbd>F11</kbd></span><span data-sgs>kamera · žemieplapis · pauzė · vėsas ekrans</span><span data-lt>kamera · žemėlapis · pauzė · visas ekranas</span><span data-en>camera · minimap · pause · full screen</span>
+  </div>
+
+  <h2 data-sgs>Sistemuos reikalavėmā</h2><h2 data-lt>Sistemos reikalavimai</h2><h2 data-en>System requirements</h2>
+  <p data-sgs><b>Nieka diegtė nereik</b> — nė Godot, nė Python, nė kėtu pruogramu. Žaidėma variklis ė vėsė doumenīs īr atsėsiōstam faile: ėšarchīvuok ė paleisk.</p>
+  <p data-lt><b>Nieko diegti nereikia</b> — nei Godot, nei Python, nei kitų programų. Žaidimo variklis ir visi duomenys yra atsisiųstame faile: išarchyvuok ir paleisk.</p>
+  <p data-en><b>Nothing to install</b> — no Godot, no Python, no other software. The game engine and all data are inside the download: unzip and run.</p>
+  <div class="os">
+    <div><b>Windows</b><p data-sgs>Windows 10 arba 11, 64 bitu</p><p data-lt>Windows 10 arba 11, 64 bitų</p><p data-en>Windows 10 or 11, 64-bit</p></div>
+    <div><b>macOS</b><p data-sgs>macOS 10.15 Catalina ar naujesnė (Intel); macOS 11 ar naujesnė (Apple Silicon)</p><p data-lt>macOS 10.15 Catalina ar naujesnė (Intel); macOS 11 ar naujesnė (Apple Silicon)</p><p data-en>macOS 10.15 Catalina or newer (Intel); macOS 11 or newer (Apple Silicon)</p></div>
+    <div><b>Linux</b><p data-sgs>64 bitu (x86_64), glibc 2.28+ (Ubuntu 20.04, Debian 10, Fedora 29 ar naujesnė)</p><p data-lt>64 bitų (x86_64), glibc 2.28+ (Ubuntu 20.04, Debian 10, Fedora 29 ar naujesnė)</p><p data-en>64-bit (x86_64), glibc 2.28+ (Ubuntu 20.04, Debian 10, Fedora 29 or newer)</p></div>
+    <div><b data-sgs>Naršīklie (beta)</b><b data-lt>Naršyklėje (beta)</b><b data-en>In a browser (beta)</b><p data-sgs>Spausk „Naršīklie“: žaidėms atsėsiont ~135 MB ė pasėleid (Chrome, Edge, Firefox arba Safari so WebGL 2). Grafėka paprastesnė nego atsėsiontamuo versėjuo: bė gatvės baldu, kapu, tvuoru ė geležinkelė pabėgiu.</p><p data-lt>Spausk „Naršyklėje“: žaidimas atsisiunčia ~135 MB ir pasileidžia (Chrome, Edge, Firefox ar Safari su WebGL 2). Grafika paprastesnė nei atsisiunčiamoje versijoje: be gatvės baldų, kapų, tvorų ir geležinkelio pabėgių.</p><p data-en>Click “In browser”: the game downloads ~135 MB and starts (Chrome, Edge, Firefox or Safari with WebGL 2). Simpler graphics than the download: no street furniture, graves, garden fences or railway sleepers.</p></div>
+  </div>
+  <div class="keys" style="margin-top:18px">
+    <span><b data-sgs>Pruocesuorios</b><b data-lt>Procesorius</b><b data-en>Processor</b></span><span data-sgs>64 bitu, 2 branduolē (geriau 4)</span><span data-lt>64 bitų, 2 branduoliai (rekomenduojama 4)</span><span data-en>64-bit, 2 cores (4 recommended)</span>
+    <span><b data-sgs>Atmintės</b><b data-lt>Atmintis</b><b data-en>Memory</b></span><span data-sgs>4 GB RAM (geriau 8 GB) — žaidėms naudoun aple 2 GB</span><span data-lt>4 GB RAM (rekomenduojama 8 GB) — žaidimas naudoja apie 2 GB</span><span data-en>4 GB RAM (8 GB recommended) — the game uses about 2 GB</span>
+    <span><b data-sgs>Grafėka</b><b data-lt>Grafika</b><b data-en>Graphics</b></span><span data-sgs>Vulkan, Direct3D 12 arba Metal; senesnėms plokštiems — OpenGL 3.3 (paprastesnis vaizds). Tink ė integrouta grafėka (nostatīmūs rinkis „Vėdutėnė“ arba „Žema“).</span><span data-lt>Vulkan, Direct3D 12 arba Metal; senesnėms plokštėms — OpenGL 3.3 (paprastesnis vaizdas). Tinka ir integruota grafika (nustatymuose rinkis „Vidutinė“ arba „Žema“).</span><span data-en>Vulkan, Direct3D 12 or Metal; older cards: OpenGL 3.3 (simpler look). Integrated graphics work too (choose Medium or Low in the settings).</span>
+    <span><b data-sgs>Vieta diske</b><b data-lt>Vieta diske</b><b data-en>Disk space</b></span><span data-sgs>aple 1,2 GB (atsėsiontėms ~500 MB)</span><span data-lt>apie 1,2 GB (atsisiuntimas ~500 MB)</span><span data-en>about 1.2 GB (download ~500 MB)</span>
+  </div>
+
+  <h2 data-sgs>Kap paleistė</h2><h2 data-lt>Kaip paleisti</h2><h2 data-en>How to run it</h2>
+  <div class="os">
+    <div><b>Windows</b><p data-sgs>Ėšarchīvuok ė paleisk <code>Telsiai.exe</code> (vėins fails). Jē Windows ėspie: „Daugiau informacijos“ → „Vis tiek paleisti“.</p><p data-lt>Išarchyvuok ir paleisk <code>Telsiai.exe</code> (vienas failas). Jei Windows įspėja: „Daugiau informacijos“ → „Vis tiek paleisti“.</p><p data-en>Unzip and run <code>Telsiai.exe</code> (a single file). If Windows warns you: “More info” → “Run anyway”.</p></div>
+    <div><b>macOS</b><p data-sgs>Ėšarchīvuok ė perkelk <code>Telšiai 3D.app</code> ī „Programos“. Jē macOS neleid atėdarītė: Sistemos nustatymai → Privatumas ir sauga → „Vis tiek atidaryti“, arba Terminale <code>xattr -dr com.apple.quarantine "/Applications/Telšiai 3D.app"</code>. Tink Intel ė Apple Silicon.</p><p data-lt>Išarchyvuok ir perkelk <code>Telšiai 3D.app</code> į „Programos“. Jei macOS neleidžia atidaryti: Sistemos nustatymai → Privatumas ir sauga → „Vis tiek atidaryti“, arba Terminale <code>xattr -dr com.apple.quarantine "/Applications/Telšiai 3D.app"</code>. Tinka Intel ir Apple Silicon.</p><p data-en>Unzip and move <code>Telšiai 3D.app</code> to Applications. If macOS will not open it: System Settings → Privacy &amp; Security → “Open Anyway”, or in Terminal <code>xattr -dr com.apple.quarantine "/Applications/Telšiai 3D.app"</code>. Works on Intel and Apple Silicon.</p></div>
+    <div><b>Linux</b><p data-sgs>Ėšarchīvuok ė paleisk <code>./Telsiai.x86_64</code>.</p><p data-lt>Išarchyvuok ir paleisk <code>./Telsiai.x86_64</code>.</p><p data-en>Unzip and run <code>./Telsiai.x86_64</code>.</p></div>
+    <div><b data-sgs>Naršīklie</b><b data-lt>Naršyklėje</b><b data-en>In a browser</b><p data-sgs>Spausk „▶ Naršīklie“ vėršou — nieka atsėsiōstė nereik.</p><p data-lt>Spausk „▶ Naršyklėje“ viršuje — nieko atsisiųsti nereikia.</p><p data-en>Click “▶ In browser” at the top — nothing to download.</p></div>
+  </div>
 </main>
 
 <footer>
   <span data-sgs>Žaidėma autorios</span><span data-lt>Žaidimo autorius</span><span data-en>Game by</span> Gediminas Survila ·
   <span data-sgs>Žemieplapė doumenīs</span><span data-lt>Žemėlapio duomenys</span><span data-en>Map data</span> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL) ·
-  Copernicus DEM GLO-30 · Regitra · Poly Haven (CC0) · Godot Engine · Blender
+  Copernicus DEM GLO-30 · Regitra · Poly Haven (CC0) · Godot Engine · Blender ·
+  <a href="https://github.com/gediminasurvila/telsiai-3d-site/releases">GitHub</a>
 </footer>
 
 <script>
