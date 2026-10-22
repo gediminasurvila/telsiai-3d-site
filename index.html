@@ -20,7 +20,7 @@
   .lang button { font:900 italic 15px Barlow, sans-serif; border:0; padding:6px 12px; background:var(--paper); cursor:pointer; }
   .lang button.on { background:var(--gold); }
   .hero { position:relative; min-height:min(78vh, 820px); display:flex; align-items:flex-end; border-bottom:8px solid var(--ink);
-          background:linear-gradient(180deg, #8fc1e3 0%, #cfe6f2 52%, #3f7fa6 52.2%, var(--lake) 100%); overflow:hidden; }
+          background:url(img/shot_square.jpg) center/cover; overflow:hidden; }
   .hero::before { content:""; position:absolute; inset:0;
           background:radial-gradient(rgba(17,18,22,.16) 1.4px, transparent 1.6px) 0 0/10px 10px; }
   .hero .hills { position:absolute; left:0; right:0; bottom:47.8%; height:34%; }
@@ -36,13 +36,25 @@
   .soon { display:inline-block; background:var(--gold); color:var(--ink); border:4px solid var(--ink); box-shadow:6px 6px 0 #000; padding:10px 22px;
           font:900 italic 22px Barlow, sans-serif; transform:skewX(-10deg); }
   .soon small { display:block; font:600 normal 13px Inter, sans-serif; }
+  .btns { display:flex; flex-wrap:wrap; gap:14px; }
+  .btn { background:var(--gold); color:var(--ink); border:4px solid var(--ink); box-shadow:6px 6px 0 #000; padding:10px 22px;
+         font:900 italic 20px Barlow, sans-serif; text-decoration:none; transition:transform .1s; transform:skewX(-10deg); }
+  .btn > * { display:block; }
+  .btn:hover, .btn:focus-visible { background:var(--red); color:#fff; transform:skewX(-10deg) translate(-2px,-2px); box-shadow:9px 9px 0 #000; }
+  .btn small { font:600 normal 12px Inter, sans-serif; opacity:.85; }
+  .ver { margin-top:16px; font-size:13px; opacity:.85; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:26px; }
+  .panel { border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); background:var(--paper); margin:0; }
+  .panel img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-bottom:5px solid var(--ink); }
+  .panel figcaption { padding:10px 14px; font:900 italic 18px Barlow, sans-serif; }
+  .panel figcaption span { display:block; font:400 normal 14px Inter, sans-serif; opacity:.75; }
   main { max-width:1100px; margin:0 auto; padding:24px 16px 60px; }
   h2 { display:inline-block; font-family:Barlow, Impact, sans-serif; font-style:italic; font-weight:900; font-size:34px; margin:56px 0 20px;
        background:var(--gold); border:4px solid var(--ink); box-shadow:6px 6px 0 var(--ink); padding:2px 22px; transform:skewX(-10deg); }
   .features { padding-left:20px; } .features li { margin:7px 0; }
   .features li::marker { content:"★ "; color:var(--red); }
   footer { border-top:8px solid var(--ink); background:var(--slate); color:var(--paper); padding:22px 16px; font-size:14px; text-align:center; }
-  @media (max-width:600px) { .hero .card { transform:none; padding:18px; } .hero .card > * { transform:none; } .soon { transform:none; } }
+  @media (max-width:600px) { .btn { width:100%; text-align:center; } .hero .card { transform:none; padding:18px; } .hero .card > * { transform:none; } .soon { transform:none; } }
 </style>
 </head>
 <body>
@@ -51,7 +63,7 @@
 </div>
 
 <header class="hero">
-  <svg class="hills" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+  <svg class="hills" style="display:none" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 300 L0 170 C120 120 220 140 320 110 C420 80 500 150 610 120 C700 95 780 60 880 100 C980 140 1080 90 1200 130 L1200 300 Z" fill="#3e6b3a" stroke="#111216" stroke-width="5"/>
     <g fill="#f4eedc" stroke="#111216" stroke-width="4">
       <rect x="545" y="70" width="70" height="60"/><rect x="565" y="22" width="30" height="48"/>
@@ -66,8 +78,12 @@
     <p class="lead" data-sgs>Atvėra svieta važėnėjėma žaidėms tėkra dīdė Telšiūs — žemaitėškā: katedra ont Insulas kalna, Mastė ežers, Turgaus aikštė ė vėsas miesta gatvės.</p>
     <p class="lead" data-lt>Atviro pasaulio vairavimo žaidimas tikro dydžio Telšiuose — žemaitiškai: katedra ant Insulos kalno, Masčio ežeras, Turgaus aikštė ir visos miesto gatvės.</p>
     <p class="lead" data-en>An open-world driving game in a 1:1 model of Telšiai, Lithuania — in Samogitian: the cathedral on Insula hill, Lake Mastis, Turgaus aikštė and every street in town.</p>
-    <div class="soon"><span data-sgs>Kuriams — netrukus</span><span data-lt>Kuriamas — netrukus</span><span data-en>In development — coming soon</span>
-      <small>Windows · macOS · Linux</small></div>
+    <div class="btns">
+      <a class="btn" href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest/download/Telsiai-windows.zip"><span>⬇ Windows</span><small data-sgs>64 bitu · zip</small><small data-lt>64 bitų · zip</small><small data-en>64-bit · zip</small></a>
+      <a class="btn" href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest/download/Telsiai-macos.zip"><span>⬇ macOS</span><small>Intel + Apple Silicon</small></a>
+      <a class="btn" href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest/download/Telsiai-linux.zip"><span>⬇ Linux</span><small>x86_64 · zip</small></a>
+    </div>
+    <div class="ver"><span data-sgs>Dīkā · aple 500 MB · </span><span data-lt>Nemokamai · apie 500 MB · </span><span data-en>Free · about 500 MB · </span><a href="https://github.com/gediminasurvila/telsiai-3d-site/releases/latest">GitHub</a></div>
   </div></div>
 </header>
 
@@ -79,6 +95,19 @@
   <p data-sgs>Žaidėms kouriams. Ėš tuo patėis autoriaus — <a href="https://gediminasurvila.github.io/kedainiai-3d-site/">Kiedainē 3D</a>.</p>
   <p data-lt>Žaidimas kuriamas ir tobulinamas. Iš to paties autoriaus — <a href="https://gediminasurvila.github.io/kedainiai-3d-site/">Kėdainiai 3D</a>.</p>
   <p data-en>The game is in development. By the same author — <a href="https://gediminasurvila.github.io/kedainiai-3d-site/">Kėdainiai 3D</a>.</p>
+
+  <h2 data-sgs>Kadrā</h2><h2 data-lt>Kadrai</h2><h2 data-en>Screenshots</h2>
+  <div class="grid">
+    <figure class="panel"><img src="img/shot_square.jpg" alt="Turgaus aikštė"><figcaption><b data-sgs>Turgaus aikštė</b><b data-lt>Turgaus aikštė</b><b data-en>Turgaus aikštė</b><span data-sgs>Laikrodė bokšts so meška</span><span data-lt>Laikrodžio bokštas su meška</span><span data-en>The clock tower with the bear</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_oldtown.jpg" alt="Telšiai iš aukštai"><figcaption><b data-sgs>Telšē ėš aukštā</b><b data-lt>Telšiai iš aukštai</b><b data-en>Telšiai from above</b><span data-sgs>Mastė ežers ė miests ont kalvu</span><span data-lt>Masčio ežeras ir miestas ant kalvų</span><span data-en>Lake Mastis and the town on its hills</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_cathedral.jpg" alt="Katedra"><figcaption><b data-sgs>Katedra</b><b data-lt>Katedra</b><b data-en>The cathedral</b><span data-sgs>Šv. Antana Paduvietė katedra ont Insulas kalna</span><span data-lt>Šv. Antano Paduviečio katedra ant Insulos kalno</span><span data-en>St Anthony of Padua on Insula hill</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_mastis.jpg" alt="Masčio ežeras"><figcaption><b data-sgs>Mastė ežers</b><b data-lt>Masčio ežeras</b><b data-en>Lake Mastis</b><span data-sgs>Krantėnė ė ontės ont vondens</span><span data-lt>Krantinė ir antys ant vandens</span><span data-en>The shore and ducks on the water</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_night.jpg" alt="Naktis"><figcaption><b data-sgs>Naktės</b><b data-lt>Naktis</b><b data-en>Night</b><span data-sgs>Švėit langā ė žibintā</span><span data-lt>Šviečia langai ir žibintai</span><span data-en>Lit windows and street lamps</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_drive.jpg" alt="Vairavimas"><figcaption><b data-sgs>Važėnėjėms</b><b data-lt>Vairavimas</b><b data-en>Driving</b><span data-sgs>Žemaitėškā: spidometrs, gatvės ženklos, žemieplapis</span><span data-lt>Žemaitiškai: spidometras, gatvės ženklas, žemėlapis</span><span data-en>In Samogitian: speedometer, street sign, minimap</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_cemetery.jpg" alt="Kapinės"><figcaption><b data-sgs>Kapā</b><b data-lt>Kapinės</b><b data-en>Cemetery</b><span data-sgs>Paminklā, krīžē ė žvakės</span><span data-lt>Paminklai, kryžiai ir žvakės</span><span data-en>Headstones, crosses and candles</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_crash.jpg" alt="Avarija"><figcaption><b data-sgs>Avarėjė</b><b data-lt>Avarija</b><b data-en>Crash</b><span data-sgs>Sodaužīta mašėna rūk ė ožsėdeg</span><span data-lt>Sudaužytas automobilis rūksta ir užsidega</span><span data-en>A wrecked car smokes and catches fire</span></figcaption></figure>
+    <figure class="panel"><img src="img/shot_rail.jpg" alt="Geležinkelis"><figcaption><b data-sgs>Geležinkelis</b><b data-lt>Geležinkelis</b><b data-en>Railway</b><span data-sgs>1520 mm vėžė ė kontaktėnis tėnkls</span><span data-lt>1520 mm vėžė ir kontaktinis tinklas</span><span data-en>1520 mm track and the overhead line</span></figcaption></figure>
+  </div>
 
   <h2 data-sgs>Kas vėdou</h2><h2 data-lt>Kas viduje</h2><h2 data-en>Features</h2>
   <ul class="features" data-sgs>
