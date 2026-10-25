@@ -1,0 +1,26 @@
+name: Site and release checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Check validator regressions
+        run: python3 -I -m unittest discover -s tests -v
+      - name: Check local site and browser assets
+        run: python3 -I scripts/check_site.py
+      - name: Check published release asset contract
+        if: github.event_name == 'release'
+        run: python3 -I scripts/check_site.py --release-event "$GITHUB_EVENT_PATH"
