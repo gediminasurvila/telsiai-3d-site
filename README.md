@@ -22,7 +22,8 @@ publish a fresh version. Review the draft and its source-commit notes before pub
 `releases/latest/download/Telsiai-*.zip` links automatically use the latest published stable release;
 drafts and prereleases do not replace those downloads. Existing releases are never overwritten.
 
-The site's workflow checks local links, download filenames and browser pack/engine sizes on PRs and pushes.
+The site's workflow checks local links, download filenames, browser pack/engine sizes and the language
+switch on PRs and pushes.
 On future release publication it also checks that all three packages and the checksum manifest exist and
 are nonempty. This is a post-publication check, not an approval gate or a verification of package hashes;
 the game workflow verifies hashes before upload. Run locally with:
@@ -30,6 +31,7 @@ the game workflow verifies hashes before upload. Run locally with:
 ```bash
 python3 -I scripts/check_site.py
 python3 -I -m unittest discover -s tests -v
+node --test tests/language.test.mjs
 ```
 
 GitHub Pages continues to serve `main` from the repository root. Uploading a desktop release does not
